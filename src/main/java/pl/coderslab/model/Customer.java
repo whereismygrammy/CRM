@@ -1,6 +1,7 @@
 package pl.coderslab.model;
 
 public class Customer {
+    private int id;
     private String name;
     private String surname;
     private String birthDay;
@@ -17,6 +18,14 @@ public class Customer {
         this.name = name;
         this.surname = surname;
         this.birthDay = birthDay;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

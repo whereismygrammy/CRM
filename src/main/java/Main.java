@@ -3,13 +3,44 @@ import pl.coderslab.dao.VehicleDao;
 import pl.coderslab.model.Customer;
 import pl.coderslab.model.Vehicle;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
 
-        Customer customer = new Customer("Tomasz", "JavaAddTest", "1989-01-10");
-        CustomerDao.addCustomer(customer);
+
+
+        //ReadCustomer Test
+       Customer customer = CustomerDao.getCustomerById(2);
+//        System.out.println(customer);
+//
+//        customer.setSurname("DUPA_WOŁOWA");
+
+        //LoadAllCustomerTest
+        List<Customer> customerList = CustomerDao.getAllCustomer();
+
+        for (Customer c : customerList) {
+            System.out.println(c);
+        }
+
+        CustomerDao.deleteCustomer(customer);
+
+        customerList = CustomerDao.getAllCustomer();
+
+        for (Customer c : customerList) {
+            System.out.println(c);
+        }
+
+
+
+        //AddCustomer Test
+//        Customer customer = new Customer("s", "Jav12aAddTest", "1989-03-10");
+//        CustomerDao.addOrUpdateCustomer(customer);
+
+
+
 
         // TUTAJ są te błędne metody:
 //

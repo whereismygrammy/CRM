@@ -5,6 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbUtil {
@@ -27,4 +28,24 @@ public class DbUtil {
         }
         return ds;
     }
+
+
+    //MOJA METODA
+    public static Connection createConnection(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
+                            + "crm?useSSL=false",
+                    "root",
+                    "coderslab");
+            return connection;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 }

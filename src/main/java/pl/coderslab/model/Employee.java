@@ -1,13 +1,13 @@
 package pl.coderslab.model;
 
 public class Employee {
+    private int id;
     private String name;
     private String surname;
-    private String adress;
+    private String address;
     private String phone;
     private String note;
     private double costPerHour;
-
 
     public Employee() {
     }
@@ -15,10 +15,18 @@ public class Employee {
     public Employee(String name, String surname, String adress, String phone, String note, double costPerHour) {
         this.name = name;
         this.surname = surname;
-        this.adress = adress;
+        this.address = adress;
         this.phone = phone;
         this.note = note;
         this.costPerHour = costPerHour;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,12 +45,12 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {
@@ -74,7 +82,7 @@ public class Employee {
         return "Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", note='" + note + '\'' +
                 ", costPerHour=" + costPerHour +

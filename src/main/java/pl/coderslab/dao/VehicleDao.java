@@ -1,13 +1,11 @@
 package pl.coderslab.dao;
 
 import pl.coderslab.model.Vehicle;
-import utils.DbUtil;
+import pl.coderslab.utils.DbUtil;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class VehicleDao {
 

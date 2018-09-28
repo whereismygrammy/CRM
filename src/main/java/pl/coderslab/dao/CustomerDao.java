@@ -1,7 +1,7 @@
 package pl.coderslab.dao;
 
 import pl.coderslab.model.Customer;
-import utils.DbUtil;
+import pl.coderslab.utils.DbUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -90,13 +90,34 @@ public class CustomerDao {
     public static void deleteCustomer(Customer customer) {
         String sql = "DELETE FROM customer WHERE id = ?";
 
-        try {
-            Connection connection = DbUtil.createConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, customer.getId());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (customer != null && getCustomerById(customer.getId()) != null) {
+            try {
+                Connection connection = DbUtil.createConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, customer.getId());
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Nie ma takiego usera");
+        }
+
+    }
+
+    public static void deleteCustomerById(int id) {
+        String sql = "DELETE FROM customer WHERE id = ?";
+        if (id != 0) {
+            try {
+                Connection connection = DbUtil.createConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Nie ma takiego usera");
         }
 
     }

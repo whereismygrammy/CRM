@@ -1,6 +1,7 @@
 package pl.coderslab.dao;
 
 import pl.coderslab.model.Customer;
+import pl.coderslab.model.Vehicle;
 import pl.coderslab.utils.DbUtil;
 
 import java.sql.*;
@@ -109,6 +110,10 @@ public class CustomerDao {
         String sql = "DELETE FROM customer WHERE id = ?";
         if (id != 0) {
             try {
+                VehicleDao.deleteVehicleByCustomerId(id);
+
+                Customer customer = getCustomerById(id);
+                customer.setId(0);
                 Connection connection = DbUtil.createConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setInt(1, id);

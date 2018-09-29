@@ -1,52 +1,134 @@
 package pl.coderslab.dao;
 
+import pl.coderslab.model.Customer;
 import pl.coderslab.model.Vehicle;
 import pl.coderslab.utils.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VehicleDao {
 
 
     public static void addVehicle(Vehicle vehicle) {
-        String sql = "INSERT INTO test_veh (model, brand, productionYear, licensePlate, nextTechnicalInspection) VALUES (?, ?, ?, ?, ?)";
-        try {
 
-            Connection connection = DbUtil.getConn();
+        if (vehicle.getId() == 0) {
+            String sql = "INSERT INTO vehicle (customer_id, model, brand, productionYear, licensePlate, nextTechnicalInspection) VALUES (?, ?, ?, ?, ?, ?)";
+            try {
+                Connection connection = DbUtil.createConnection();
 
-//
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
-//                            + "crm?useSSL=false",
-//                    "root",
-//                    "coderslab");
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, vehicle.getCustomer_id());
+                preparedStatement.setString(2, vehicle.getModel());
+                preparedStatement.setString(3, vehicle.getBrand());
+                preparedStatement.setString(4, vehicle.getProductionYear());
+                preparedStatement.setString(5, vehicle.getLicensePlate());
+                preparedStatement.setString(6, vehicle.getNextTechnicalInspection());
+                preparedStatement.executeUpdate();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, vehicle.getModel());
-            preparedStatement.setString(2, vehicle.getBrand());
-            preparedStatement.setString(3, vehicle.getProductionYear());
-            preparedStatement.setString(4, vehicle.getLicensePlate());
-            preparedStatement.setString(5, vehicle.getNextTechnicalInspection());
-            preparedStatement.executeUpdate();
+                System.out.println("Dodano pojazd " + vehicle.getModel() + " do bazy danych");
 
-            System.out.println(preparedStatement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                String sql = "UPDATE vehicle SET customer_id = ?, model = ?, brand = ?, productionYear = ?, licensePlate = ?, nextTechnicalInspection = ? WHERE id = ?)";
+                Connection connection = DbUtil.createConnection();
 
-            System.out.println("Dodano pojazd " + vehicle.getModel() + " do bazy danych");
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, vehicle.getModel());
+                preparedStatement.setString(2, vehicle.getBrand());
+                preparedStatement.setString(3, vehicle.getProductionYear());
+                preparedStatement.setString(4, vehicle.getLicensePlate());
+                preparedStatement.setString(5, vehicle.getNextTechnicalInspection());
+                preparedStatement.setInt(6, vehicle.getCustomer_id());
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+                preparedStatement.executeUpdate();
+
+                System.out.println("Dodano pojazd " + vehicle.getModel() + " do bazy danych");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        /*catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
 
     }
 
+    public static Vehicle getVehicleById(int id) {
+        String sql = "SELECT * FROM vehicle WHERE id = ?";
 
-//    public Vehicle getVehicleByLicensePlate(String licensePlate){
-//        String sql = "SELECT * FROM ";
-//
-//    }
+        try {
+            Connection connection = DbUtil.createConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Vehicle vehicle = new Vehicle();
+                vehicle.setCustomer_id(resultSet.getInt("customer_id"));
+                vehicle.setId(resultSet.getInt("id"));
+                vehicle.setBrand(resultSet.getString("brand"));
+                vehicle.setModel(resultSet.getString("model"));
+                vehicle.setLicensePlate(resultSet.getString("licensePlate"));
+                vehicle.setNextTechnicalInspection(resultSet.getString("nextTechnicalInspection"));
+                vehicle.setProductionYear(resultSet.getString("productionYear"));
+                return vehicle;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<Vehicle> getVehicleByCustomerId(int customerId) {
+        String sql = "SELECT * FROM vehicle WHERE customer_id = ?";
+        List<Vehicle> vehicles = new ArrayList<>();
+        try {
+            Connection connection = DbUtil.createConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, customerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Vehicle vehicle = new Vehicle();
+                vehicle.setCustomer_id(resultSet.getInt("customer_id"));
+                vehicle.setId(resultSet.getInt("id"));
+                vehicle.setBrand(resultSet.getString("brand"));
+                vehicle.setModel(resultSet.getString("model"));
+                vehicle.setLicensePlate(resultSet.getString("licensePlate"));
+                vehicle.setNextTechnicalInspection(resultSet.getString("nextTechnicalInspection"));
+                vehicle.setProductionYear(resultSet.getString("productionYear"));
+                vehicles.add(vehicle);
+            }
+            return vehicles;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void deleteVehicleByCustomerId(int id) {
+        String sql = "DELETE FROM vehicle WHERE customer_id = ?";
+        if (id != 0) {
+            try {
+                List<Vehicle> vehicle = getVehicleByCustomerId(id);
+                for (Vehicle v : vehicle) {
+                    v.setId(0);
+                }
+
+                Connection connection = DbUtil.createConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

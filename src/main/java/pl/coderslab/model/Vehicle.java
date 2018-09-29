@@ -2,6 +2,8 @@ package pl.coderslab.model;
 
 
 public class Vehicle {
+    private int id;
+    private int customer_id;
     private String model;
     private String brand;
     private String productionYear;
@@ -17,6 +19,31 @@ public class Vehicle {
         this.productionYear = productionYear;
         this.licensePlate = licensePlate;
         this.nextTechnicalInspection = nextTechnicalInspection;
+    }
+
+    public Vehicle(int customer_id, String model, String brand, String productionYear, String licensePlate, String nextTechnicalInspection) {
+        this.customer_id = customer_id;
+        this.model = model;
+        this.brand = brand;
+        this.productionYear = productionYear;
+        this.licensePlate = licensePlate;
+        this.nextTechnicalInspection = nextTechnicalInspection;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
     public String getModel() {
@@ -69,4 +96,5 @@ public class Vehicle {
                 ", nextTechnicalInspection=" + nextTechnicalInspection +
                 '}';
     }
+
 }

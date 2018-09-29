@@ -65,6 +65,8 @@ public class OrderDao {
                 preparedStatement.setDouble(11, order.getWorkCost());
                 preparedStatement.setInt(12, order.getNumberOfHours());
                 preparedStatement.setInt(13, order.getId());
+                preparedStatement.executeUpdate();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -117,7 +119,28 @@ public class OrderDao {
         ArrayList<Order> orderList = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM orders JOIN vehicle ON orders.vehicle_id=vehicle.id where employee_id= ?";
+            String sql = "SELECT * FROM orders JOIN vehicle ON orders.vehicle_id=vehicle.id where customer_id = ?";
+
+            Connection connection = DbUtil.createConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Order order = orderFromResultSet(resultSet);
+                orderList.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderList;
+    }
+
+    public static List<Order> getOrdersByVehicleId(int id) {
+        ArrayList<Order> orderList = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM orders WHERE vehicle_id = ?";
 
             Connection connection = DbUtil.createConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -157,11 +180,10 @@ public class OrderDao {
         String sql = "DELETE FROM orders WHERE id = ?";
         if (id != 0) {
             try {
-                Order order = getOrderById(id);
-                order.setId(0);
                 Connection connection = DbUtil.createConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setInt(1, id);
+
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();

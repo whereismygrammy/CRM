@@ -21,12 +21,12 @@
         }
     </style>
 
-    <title>Lista kientów</title>
+    <title>Lista pojazdów</title>
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 
-<h5>Lista klientów</h5>
+<h5>Lista pojazdów</h5>
 
 <table width="50%" border="1">
 
@@ -49,6 +49,9 @@
         <th>
             Następna kontrola
         </th>
+        <th>
+        </th>
+
         <th width="8%">
         </th>
 
@@ -77,7 +80,11 @@
                     ${vehicle.nextTechnicalInspection}
             </td>
             <td>
-                <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}" class="waves-effect waves-light btn">Usuń</a>
+            <td>
+            <a href="/vehicleDetails?vehicleId=${vehicle.id}" class="waves-effect waves-light btn">Szczegóły</a>
+            </td>
+            <td>
+            <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}" class="waves-effect waves-light btn">Usuń</a>
             </td>
 
         </tr>

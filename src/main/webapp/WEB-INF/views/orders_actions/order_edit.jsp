@@ -13,7 +13,7 @@
 
 <html>
 <head>
-    <title>Dodaj Zadanie</title>
+    <title>Edytuj Zadanie</title>
     <style>
         div, body {
             margin: 5px;
@@ -37,66 +37,66 @@
     <div class="row">
         <div class="col s6 offset-s3">
             <div class="card">
-                <h5>Dodaj Zadanie</h5>
+                <h5>Edytuj Zadanie</h5>
+
+                <form action="/orderEdit" method="post">
 
 
-                <form action="/orderAdd" method="post">
-
-
-                    <input type="date" name="dateOfAcceptance">
+                    <input type="date" name="dateOfAcceptance" value="${order.dateOfAcceptance}">
                     <label>Data przyjęcia zlecenia</label>
 
 
-                    <input type="date" name="dateOfPlanedStart">
+                    <input type="date" name="dateOfPlanedStart" value="${order.dateOfPlanedStart}">
                     <label>Data planowanego startu</label>
 
-                    <input type="date" name="dateOfStart">
+                    <input type="date" name="dateOfStart" value="${order.dateOfStart}">
                     <label>Data startu</label>
 
                     <select name="employee">
-                        <option value="" disabled selected>Wybierz pracownika</option>
+                        <option disabled selected>Zmień pracownika lub wybierz ponownie ${order.employee.name}</option>
                         <c:forEach items="${allEmployee}" var="employee" varStatus="loopStatus">
                             <option value="${employee.id}">${employee.name}</option>
                         </c:forEach>
                     </select>
 
 
-                    <input type="text" name="problemDescription">
+                    <input type="text" name="problemDescription" value="${order.problemDescription}">
                     <label>Opis problemu</label>
 
-                    <input type="text" name="repairDescription">
+                    <input type="text" name="repairDescription" value="${order.repairDescription}">
                     <label>Opis rozwiązania</label>
 
                     <select name="status">
-                        <option value="" disabled selected>Status zgłoszenia</option>
+                        <option disabled selected>Zmień status lub wybierz ponownie ${order.status}</option>
                         <c:forEach items="${status}" var="stat" varStatus="loopStatus">
                             <option value="${stat}">${stat}</option>
                         </c:forEach>
                     </select>
 
                     <select name="vehicle">
-                        <option value="" disabled selected>Pojazd</option>
+                        <option disabled selected>Zmień pojazd lub wybierz ponownie ${order.vehicle.licensePlate}
+                        </option>
                         <c:forEach items="${vehicles}" var="vehicle" varStatus="loopStatus">
                             <option value="${vehicle.id}">${vehicle.licensePlate}</option>
                         </c:forEach>
                     </select>
 
-                    <p>
-                        <input type="text" name="costForClient">
-                        <label>Wycena dla klienta</label>
-                    </p>
 
-                    <p>
-                        <input type="text" name="partsCost">
-                        <label>Ceny części zamiennych</label>
-                    </p>
-                    <p>
-                        <input type="number" name="numberOfHours">
-                        <label>Poświęcone godziny</label>
-                    </p>
+                    <input type="text" name="costForClient" value="${order.costForClient}">
+                    <label>Wycena dla klienta</label>
 
-                    <button class="btn waves-effect waves-light" type="submit">Submit
-                        <i class="material-icons right">send</i>
+                    <input type="text" name="partsCost" value="${order.partsCost}">
+                    <label>Ceny części zamiennych</label>
+
+                    <input type="number" name="numberOfHours" value="${order.numberOfHours}">
+                    <label>Poświęcone godziny</label>
+
+                    <input class="hidden" type="text" name="orderId" value="${order.id}">
+
+
+                    <br><br>
+                    <button class=" btn waves-effect waves-light"
+                            type="submit">Zapisz dane<i class="material-icons right">send</i>
                     </button>
                 </form>
             </div>

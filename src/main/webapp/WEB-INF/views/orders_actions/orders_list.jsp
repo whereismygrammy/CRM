@@ -36,7 +36,7 @@
             No
         </th>
         <th>
-            Przyjęcie zlecenia
+            Opis zlecenia
         </th>
         <th>
             Planowany start
@@ -74,7 +74,7 @@
                     ${loopStatus.count}
             </td>
             <td>
-                    ${order.dateOfAcceptance}
+                    ${order.problemDescription}
             </td>
             <td>
                     ${order.dateOfPlanedStart}

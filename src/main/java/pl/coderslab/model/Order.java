@@ -6,22 +6,6 @@ import pl.coderslab.dao.VehicleDao;
 import java.time.LocalDate;
 
 
-//Data przyjęcia do naprawy
-//Planowana data rozpoczęcia naprawy
-//Data rozpoczęcia do naprawy
-
-//Przypisany do naprawy pracownik
-//Opis problemu
-//Opis naprawy
-
-//Status
-//Pojazd którego dotyczy naprawa
-//Koszt naprawy dla klienta
-//Koszt wykorzystanych części
-//Koszt roboczogodziny (informacja przepisywana z kosztu roboczogodziny pracownika wykonującego naprawę)
-//Ilość roboczogodzin
-
-
 public class Order {
 
     private int id;

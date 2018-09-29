@@ -15,9 +15,21 @@ import java.util.List;
 
 @WebServlet(name = "orderList", urlPatterns = "/orderList")
 public class orderList extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Order> orders = OrderDao.getAllOrders();
+        String idStr = request.getParameter("id");
+        List<Order> orders = null;
+        if (idStr == null) {
+            orders = OrderDao.getAllOrders();
+        } else {
+            int id = Integer.parseInt(idStr);
+            orders = OrderDao.getOrdersByCustomerId(id);
+        }
         request.setAttribute("orders", orders);
+
+
         getServletContext().getRequestDispatcher("/WEB-INF/views/orders_actions/orders_list.jsp").forward(request, response);
     }
 }

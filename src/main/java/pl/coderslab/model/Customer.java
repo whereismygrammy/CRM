@@ -6,8 +6,7 @@ public class Customer {
     private int id;
     private String name;
     private String surname;
-    private String birthDay;
-    private LocalDate date;
+    private LocalDate birthDay;
 
     public Customer() {
     }
@@ -20,7 +19,7 @@ public class Customer {
     public Customer(String name, String surname, String birthDay) {
         this.name = name;
         this.surname = surname;
-        this.birthDay = birthDay;
+        this.birthDay = LocalDate.parse(birthDay);
     }
 
     public int getId() {
@@ -47,12 +46,12 @@ public class Customer {
         this.surname = surname;
     }
 
-    public String getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
     public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
+        this.birthDay = LocalDate.parse(birthDay);
     }
 
     @Override

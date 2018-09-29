@@ -19,7 +19,7 @@ public class CustomerDao {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
-                preparedStatement.setString(3, customer.getBirthDay());
+                preparedStatement.setString(3, customer.getBirthDay().toString());
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -31,7 +31,7 @@ public class CustomerDao {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
-                preparedStatement.setString(3, customer.getBirthDay());
+                preparedStatement.setString(3, customer.getBirthDay().toString());
                 preparedStatement.setInt(4, customer.getId());
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {

@@ -1,10 +1,13 @@
 package pl.coderslab.model;
 
+import java.time.LocalDate;
+
 public class Customer {
     private int id;
     private String name;
     private String surname;
     private String birthDay;
+    private LocalDate date;
 
     public Customer() {
     }

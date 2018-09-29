@@ -14,13 +14,12 @@
 
 <html>
 <head>
-    <title>Dodaj klienta</title>
+    <title>Dodaj Pracownika</title>
     <style>
         div, body {
             margin: 5px;
             padding: 5px;
         }
-
 
     </style>
 
@@ -28,23 +27,32 @@
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 <div>
-    <h5>Dodaj użytkownika</h5>
-    <form action="/clientAdd" method="post">
+    <h5>Dodaj Pracownika</h5>
+    <form action="/employeeAdd" method="post">
+
+
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Imię" type="text" name="firstname">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-
-            <input type="text" matInput placeholder="Nazwisko" name="lastname">
+            <input type="text" placeholder="Nazwisko" name="lastname">
         </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Adres" name="address">
+        </mat-form-field>
 
         <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Telefon" name="phone">
+        </mat-form-field>
 
-            <input type="date" placeholder="dupas
-" name="birthday">
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Notatka" name="note">
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Koszt na godzinę" name="costPerHour">
         </mat-form-field>
 
         <center>

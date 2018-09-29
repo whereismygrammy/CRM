@@ -1,4 +1,4 @@
-package pl.coderslab.servlet;
+package pl.coderslab.servlet.ClientsActions;
 
 import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.model.Customer;
@@ -13,15 +13,9 @@ import java.util.List;
 
 @WebServlet(name = "clientList", urlPatterns = "/clientList")
 public class clientList extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         List<Customer> allCustomer = CustomerDao.getAllCustomer();
         request.setAttribute("customers", allCustomer);
         getServletContext().getRequestDispatcher("/WEB-INF/views/client_actions/client_list.jsp").forward(request, response);
-
     }
 }

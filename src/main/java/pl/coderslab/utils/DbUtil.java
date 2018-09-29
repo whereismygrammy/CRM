@@ -20,7 +20,6 @@ public class DbUtil {
             try {
                 Context ctx = new InitialContext();
 
-//                ds = (DataSource)ctx.lookup("java:/comp/env/jdbc/crm");
                 ds = (DataSource) ctx.lookup("java:comp/env/jdbc/crm");
             } catch (NamingException e) {
                 e.printStackTrace();
@@ -31,7 +30,7 @@ public class DbUtil {
 
 
     //MOJA METODA
-    public static Connection createConnection(){
+    public static Connection createConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
@@ -39,9 +38,9 @@ public class DbUtil {
                     "root",
                     "coderslab");
             return connection;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

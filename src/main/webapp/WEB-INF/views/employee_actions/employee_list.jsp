@@ -21,12 +21,10 @@
         }
     </style>
 
-    <title>Lista kientów</title>
+    <title>Lista pracowników</title>
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
-
-<h5>Lista klientów</h5>
 
 <table width="50%" border="1">
 
@@ -41,44 +39,51 @@
             Nazwisko
         </th>
         <th>
-            Data urodzin
+            Adres
         </th>
-        <th width="8%">
-
+        <th>
+            Telefon
         </th>
-        <th width="8%">
-
+        <th>
+            Notatka
         </th>
-        <th width="8%">
+        <th>
+            Koszt na godzinę
+        </th>
+        <th>
         </th>
 
     </tr>
 
 
-    <c:forEach items="${customers}" var="customer" varStatus="loopStatus">
+    <c:forEach items="${employeers}" var="employee" varStatus="loopStatus">
 
         <tr>
             <td>
                     ${loopStatus.count}
             </td>
             <td>
-                    ${customer.name}
+                    ${employee.name}
             </td>
             <td>
-                    ${customer.surname}
+                    ${employee.surname}
             </td>
             <td>
-                    ${customer.birthDay}
+                    ${employee.address}
             </td>
             <td>
-                <a href="/vehicleList?id=${customer.id}" class="waves-effect waves-light btn">Pojazdy</a>
+                    ${employee.phone}
             </td>
             <td>
-                <a href="/clientEdit?id=${customer.id}" class="waves-effect waves-light btn">Edytuj</a>
+                    ${employee.note}
+            </td>
+            <td>
+                    ${employee.costPerHour}
+            </td>
 
-            </td>
             <td>
-                <a href="/clientDel?id=${customer.id}" class="waves-effect waves-light btn">Usuń</a>
+                <a href="/employeeDel?id=${employee.id}" class="waves-effect waves-light btn">Usuń pracownika</a>
+
             </td>
 
         </tr>
@@ -88,9 +93,7 @@
 </table>
 <br>
 <center>
-
-    <a href="/clientAdd" class="waves-effect waves-light btn">Dodaj klienta</a>
-
+    <a href="/employeeAdd" class="waves-effect waves-light btn">Dodaj pracownika</a>
 </center>
 
 <br>

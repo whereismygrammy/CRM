@@ -17,7 +17,7 @@
 
 <html>
 <head>
-    <title>Usunięto klienta</title>
+    <title>Usun pracownika</title>
     <style>
         div, body {
             margin: 10px;
@@ -32,8 +32,8 @@
     <center>
         <i class="material-icons">
             face
-        </i><h6>Usunięto klienta</h6><br>
-        <a href="/clientList" class="waves-effect waves-light btn">Wróć do listy</a>
+        </i><h6>Usun pracownika</h6><br>
+        <a href="/employeeList" class="waves-effect waves-light btn">Wróć do listy</a>
     </center>
 </div>
 <%@ include file="../footer_header/footer.jspf" %>

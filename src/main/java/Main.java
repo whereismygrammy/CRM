@@ -1,3 +1,4 @@
+
 import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.dao.EmployeeDao;
 import pl.coderslab.dao.VehicleDao;
@@ -5,7 +6,11 @@ import pl.coderslab.model.Customer;
 import pl.coderslab.model.Employee;
 import pl.coderslab.model.Vehicle;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Main {
 
@@ -16,32 +21,15 @@ public class Main {
 //        VehicleDao.addVehicle(vehicle);
 
 
-//        Employee emp = new Employee("1","2","3","4","5", 2);
-//        Employee emp2 = new Employee("Tom","Dom","3","4","5",10);
-//        Employee emp3 = new Employee("Dom","Dom","3","4","5",11);
-//
-//        EmployeeDao.addOrUpdateEmployee(emp);
-//        EmployeeDao.addOrUpdateEmployee(emp2);
-//        EmployeeDao.addOrUpdateEmployee(emp3);
+        LocalDate date = LocalDate.parse("2000-02-28");
+        LocalDate date2 = LocalDate.parse("2000-02-13");
 
 
-        List<Employee> allEmployee = EmployeeDao.getAllEmployee();
-
-        for (Employee emp : allEmployee) {
-            System.out.println(emp);
-        }
-
-        EmployeeDao.deleteById(2);
-
-        System.out.println("----------------");
+        long daysBetween = ChronoUnit.DAYS.between(date, date2);
 
 
-        allEmployee = EmployeeDao.getAllEmployee();
+        System.out.println(daysBetween);
 
-        for (Employee emp : allEmployee) {
-            System.out.println(emp);
-        }
+
     }
-
-
 }

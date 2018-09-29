@@ -1,4 +1,4 @@
-package pl.coderslab.servlet;
+package pl.coderslab.servlet.ClientsActions;
 
 import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.model.Customer;
@@ -10,24 +10,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "clientAdd", urlPatterns = "/clientAdd")
-public class clientAdd extends HttpServlet {
+@WebServlet(name = "clientEdit", urlPatterns = "/clientEdit")
+public class clientEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String date = request.getParameter("birthday");
+        int id= Integer.parseInt(request.getParameter("id"));
 
         Customer customer = new Customer(firstname, lastname, date);
+        customer.setId(id);
         CustomerDao.addOrUpdateCustomer(customer);
 
-        getServletContext().getRequestDispatcher("/WEB-INF/views/client_actions/client_added.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/client_actions/client_edited.jsp").forward(request, response);
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        getServletContext().getRequestDispatcher("/WEB-INF/views/client_actions/client_add.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Customer customer = CustomerDao.getCustomerById(id);
+
+        request.setAttribute("customer", customer);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/client_actions/client_edit.jsp").forward(request, response);
 
     }
 }

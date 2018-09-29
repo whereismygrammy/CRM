@@ -1,4 +1,4 @@
-package pl.coderslab.servlet;
+package pl.coderslab.servlet.ClientsActions;
 
 import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.model.Customer;

@@ -11,50 +11,31 @@
          language="java"
          isELIgnored="false" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
 
 <html>
 <head>
     <title>Dodaj klienta</title>
     <style>
         div, body {
-            margin: 5px;
+            margin: 10px;
             padding: 5px;
         }
-
-
     </style>
 
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 <div>
-    <h5>Dodaj użytkownika</h5>
-    <form action="/clientAdd" method="post">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Imię" type="text" name="firstname">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-
-            <input type="text" matInput placeholder="Nazwisko" name="lastname">
-        </mat-form-field>
-
-
-        <mat-form-field class="example-full-width">
-
-            <input type="date" placeholder="dupas
-" name="birthday">
-
-        </mat-form-field>
-
-        <center>
-
-            <input type="submit" class="waves-effect waves-light btn">
-        </center>
-
-    </form>
+    <center>
+        <i class="material-icons">
+            face
+        </i><h6>Dodano pracownika</h6><br>
+        <a href="/employeeList" class="waves-effect waves-light btn">Wróć do listy</a>
+    </center>
 </div>
-
 <%@ include file="../footer_header/footer.jspf" %>
 </body>
 </html>

@@ -22,12 +22,12 @@
         }
     </style>
 
-    <title>Lista kientów</title>
+    <title>Lista zleceń</title>
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 
-<h5>Lista klientów</h5>
+<h5>Lista zleceń</h5>
 
 <table width="50%" border="1">
 
@@ -36,16 +36,23 @@
             No
         </th>
         <th>
-            Imię
+            Przyjęcie zlecenia
         </th>
         <th>
-            Nazwisko
+            Planowany start
         </th>
         <th>
-            Data urodzin
+            Estymata
+        </th>
+
+        <th>
+            Koszt
+        </th>
+        <th>
+            Pracownik
         </th>
         <th width="8%">
-
+            Status
         </th>
 
         <th width="8%">
@@ -60,36 +67,43 @@
     </tr>
 
 
-    <c:forEach items="${customers}" var="customer" varStatus="loopStatus">
+    <c:forEach items="${orders}" var="order" varStatus="loopStatus">
 
         <tr>
             <td>
                     ${loopStatus.count}
             </td>
             <td>
-                    ${customer.name}
+                    ${order.dateOfAcceptance}
             </td>
             <td>
-                    ${customer.surname}
+                    ${order.dateOfPlanedStart}
             </td>
             <td>
-                    ${customer.birthDay}
+                    ${order.numberOfHours} h
             </td>
-
             <td>
-                <a href="/vehicleList?id=${customer.id}" class="waves-effect waves-light btn">Pojazdy</a>
+                    ${order.workCost} $
             </td>
-
             <td>
-                <a href="/orderList?id=${customer.id}" class="waves-effect waves-light btn">Zlecenia</a>
+                    ${order.employee.name}
             </td>
 
             <td>
-                <a href="/clientEdit?id=${customer.id}" class="waves-effect waves-light btn">Edytuj</a>
+                    ${order.status}
+
+            </td>
+
+            <td>
+                <a href="/orderDetails?orderId=${order.id}" class="waves-effect waves-light btn">Szczegóły</a>
+            </td>
+
+            <td>
+                <a href="/orderEdit?orderId=${order.id}" class="waves-effect waves-light btn">Edytuj</a>
 
             </td>
             <td>
-                <a href="/clientDel?id=${customer.id}" class="waves-effect waves-light btn">Usuń</a>
+                <a href="/orderDel?orderId=${order.id}" class="waves-effect waves-light btn">Usuń</a>
             </td>
 
         </tr>
@@ -100,7 +114,7 @@
 <br>
 <center>
 
-    <a href="/clientAdd" class="waves-effect waves-light btn">Dodaj klienta</a>
+    <a href="/orderAdd" class="waves-effect waves-light btn">Dodaj zlecenie</a>
 
 </center>
 

@@ -76,15 +76,7 @@ public class VehicleDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                Vehicle vehicle = new Vehicle();
-                vehicle.setCustomer_id(resultSet.getInt("customer_id"));
-                vehicle.setId(resultSet.getInt("id"));
-                vehicle.setBrand(resultSet.getString("brand"));
-                vehicle.setModel(resultSet.getString("model"));
-                vehicle.setLicensePlate(resultSet.getString("licensePlate"));
-                vehicle.setNextTechnicalInspection(resultSet.getString("nextTechnicalInspection"));
-                vehicle.setProductionYear(resultSet.getString("productionYear"));
-                return vehicle;
+                return buildVehicle(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,6 +109,38 @@ public class VehicleDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<Vehicle> getAllVehicle() {
+        String sql = "SELECT * FROM vehicle";
+        List<Vehicle> vehicles = new ArrayList<>();
+        try {
+            Connection connection = DbUtil.createConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Vehicle vehicle = buildVehicle(resultSet);
+                vehicles.add(vehicle);
+            }
+
+            return vehicles;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static Vehicle buildVehicle(ResultSet resultSet) throws SQLException {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setCustomer_id(resultSet.getInt("customer_id"));
+        vehicle.setId(resultSet.getInt("id"));
+        vehicle.setBrand(resultSet.getString("brand"));
+        vehicle.setModel(resultSet.getString("model"));
+        vehicle.setLicensePlate(resultSet.getString("licensePlate"));
+        vehicle.setNextTechnicalInspection(resultSet.getString("nextTechnicalInspection"));
+        vehicle.setProductionYear(resultSet.getString("productionYear"));
+        return vehicle;
     }
 
     public static void deleteVehicleByCustomerId(int id) {

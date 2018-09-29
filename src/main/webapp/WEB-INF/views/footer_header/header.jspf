@@ -14,9 +14,9 @@
         <tr>
             <td><a class="" href="/">Strona główna</a></td>
             <td><a href="/clientList"> Klienci</a></td>
-            <td><a href="/x"> Zlecenia</a></td>
+            <td><a href="/orderList"> Zlecenia</a></td>
             <td><a href="/employeeList"> Pracownicy</a></td>
-            <td><a href="/x"> Raporty</a></td>
+            <td><a href="/raportList"> Raporty</a></td>
 
         </tr>
     </table>

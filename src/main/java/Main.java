@@ -17,12 +17,11 @@ public class Main {
     public static void main(String[] args) {
 
 
-        List<Order> orderList = OrderDao.getOrdersByCustomerId(21);
+        List<Vehicle> vehicles = VehicleDao.getAllVehicle();
 
-        for (Order o : orderList) {
-            System.out.println(o);
+        for (Vehicle v : vehicles){
+            System.out.println(v);
         }
-
 
 
 

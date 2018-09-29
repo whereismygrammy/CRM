@@ -17,7 +17,7 @@
 
 <html>
 <head>
-    <title>Usunięto klienta</title>
+    <title>Dodano samochód</title>
     <style>
         div, body {
             margin: 10px;
@@ -31,9 +31,9 @@
 <div>
     <center>
         <i class="material-icons">
-            face
-        </i><h6>Usunięto klienta i jego pojazdy</h6><br>
-        <a href="/clientList" class="waves-effect waves-light btn">Wróć do listy</a>
+            directions_car
+        </i><h6>Dodano samochód</h6><br>
+        <a href="/vehicleList?id=${customerId}" class="waves-effect waves-light btn">Wróć do listy samochodów</a>
     </center>
 </div>
 <%@ include file="../footer_header/footer.jspf" %>

@@ -17,18 +17,10 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Vehicle vehicle = new Vehicle(30,"Civic", "Honda", "2016", "KCH-134", "2018-02-28");
+        Vehicle vehicle = new Vehicle(29,"Civic", "Honda", "2016", "KCH-134", "2018-02-28");
         VehicleDao.addVehicle(vehicle);
 
 
-        Vehicle vehicle1 = VehicleDao.getVehicleById(1);
-        System.out.println(vehicle1);
-
-        List<Vehicle> vehicles = VehicleDao.getVehicleByCustomerId(30);
-
-        for (Vehicle v : vehicles){
-            System.out.println(v);
-        }
 
 
 

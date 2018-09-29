@@ -10,7 +10,6 @@
 <%@ page contentType="text/html;charset=UTF-8"
          language="java"
          isELIgnored="false" %>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <html>
@@ -36,19 +35,19 @@
             No
         </th>
         <th>
-            Imię
+            Marka
         </th>
         <th>
-            Nazwisko
+            Model
         </th>
         <th>
-            Data urodzin
+            Rok produkcji
         </th>
-        <th width="8%">
-
+        <th>
+            Tablica rejerstracji
         </th>
-        <th width="8%">
-
+        <th>
+            Następna kontrola
         </th>
         <th width="8%">
         </th>
@@ -56,30 +55,29 @@
     </tr>
 
 
-    <c:forEach items="${customers}" var="customer" varStatus="loopStatus">
+    <c:forEach items="${vehicleList}" var="vehicle" varStatus="loopStatus">
 
         <tr>
             <td>
                     ${loopStatus.count}
             </td>
             <td>
-                    ${customer.name}
+                    ${vehicle.brand}
             </td>
             <td>
-                    ${customer.surname}
+                    ${vehicle.model}
             </td>
             <td>
-                    ${customer.birthDay}
+                    ${vehicle.productionYear}
             </td>
             <td>
-                <a href="/vehicleList?id=${customer.id}" class="waves-effect waves-light btn">Pojazdy</a>
+                    ${vehicle.licensePlate}
             </td>
             <td>
-                <a href="/clientEdit?id=${customer.id}" class="waves-effect waves-light btn">Edytuj</a>
-
+                    ${vehicle.nextTechnicalInspection}
             </td>
             <td>
-                <a href="/clientDel?id=${customer.id}" class="waves-effect waves-light btn">Usuń</a>
+                <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}" class="waves-effect waves-light btn">Usuń</a>
             </td>
 
         </tr>
@@ -89,9 +87,7 @@
 </table>
 <br>
 <center>
-
-    <a href="/clientAdd" class="waves-effect waves-light btn">Dodaj klienta</a>
-
+    <a href="/vehicleAdd?id=${customerId}" class="waves-effect waves-light btn">Dodaj samochód</a>
 </center>
 
 <br>

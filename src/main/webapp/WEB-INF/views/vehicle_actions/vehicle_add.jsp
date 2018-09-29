@@ -21,6 +21,9 @@
             padding: 5px;
         }
 
+        .hidden {
+            display: none;
+        }
 
     </style>
 
@@ -28,23 +31,31 @@
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 <div>
-    <h5>Dodaj użytkownika</h5>
-    <form action="/clientAdd" method="post">
+    <h5>Dodaj samochód</h5>
+    <form action="/vehicleAdd" method="post">
+
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Imię" type="text" name="firstname">
+            <input matInput placeholder="Marka" type="text" name="brand">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-
-            <input type="text" matInput placeholder="Nazwisko" name="lastname">
+            <input type="text" matInput placeholder="Model" name="model">
         </mat-form-field>
-
 
         <mat-form-field class="example-full-width">
-
-            <input type="date" name="birthday">
-
+            <input type="text" matInput placeholder="Rok produkcji" name="productionYear">
         </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input type="text" matInput placeholder="Tablica rejerstracji" name="licensePlate">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input type="date" matInput placeholder="Następna kontrola" name="nextTechnicalInspection">
+        </mat-form-field>
+
+
+        <input class="hidden" type="text" name="customerId" value="${customerId}">
 
         <center>
 

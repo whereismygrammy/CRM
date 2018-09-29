@@ -131,4 +131,20 @@ public class VehicleDao {
         }
     }
 
+    public static void deleteVehicleById(int id) {
+        String sql = "DELETE FROM vehicle WHERE id = ?";
+        if (id != 0) {
+            try {
+                Vehicle vehicle = getVehicleById(id);
+                Connection connection = DbUtil.createConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, id);
+                preparedStatement.executeUpdate();
+                vehicle.setId(0);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

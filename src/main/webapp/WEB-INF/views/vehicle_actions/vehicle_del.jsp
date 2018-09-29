@@ -31,9 +31,9 @@
 <div>
     <center>
         <i class="material-icons">
-            face
+            directions_car
         </i><h6>Usunięto klienta i jego pojazdy</h6><br>
-        <a href="/clientList" class="waves-effect waves-light btn">Wróć do listy</a>
+        <a href="/vehicleList?id=${customerId}" class="waves-effect waves-light btn">Wróć do listy</a>
     </center>
 </div>
 <%@ include file="../footer_header/footer.jspf" %>

@@ -1,10 +1,10 @@
 
 import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.dao.EmployeeDao;
+import pl.coderslab.dao.OrderDao;
 import pl.coderslab.dao.VehicleDao;
-import pl.coderslab.model.Customer;
-import pl.coderslab.model.Employee;
-import pl.coderslab.model.Vehicle;
+import pl.coderslab.model.*;
+import pl.coderslab.utils.StatusWriter;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -17,26 +17,14 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Vehicle vehicle = new Vehicle(29,"Civic", "Honda", "2016", "KCH-134", "2018-02-28");
-        VehicleDao.addVehicle(vehicle);
+        List<Order> orderList = OrderDao.getOrdersByCustomerId(21);
+
+        for (Order o : orderList) {
+            System.out.println(o);
+        }
 
 
 
-
-
-
-
-
-
-//
-//        LocalDate date = LocalDate.parse("2000-02-28");
-//        LocalDate date2 = LocalDate.parse("2000-02-13");
-//
-//
-//        long daysBetween = ChronoUnit.DAYS.between(date, date2);
-//
-//
-//        System.out.println(daysBetween);
 
 
     }

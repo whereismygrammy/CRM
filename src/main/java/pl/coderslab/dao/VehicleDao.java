@@ -19,9 +19,11 @@ public class VehicleDao {
         if (vehicle.getId() == 0) {
             String sql = "INSERT INTO vehicle (customer_id, model, brand, productionYear, licensePlate, nextTechnicalInspection) VALUES (?, ?, ?, ?, ?, ?)";
             try {
+                String[] generatedColumns = {"ID"};
                 Connection connection = DbUtil.createConnection();
 
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, generatedColumns);
                 preparedStatement.setInt(1, vehicle.getCustomer_id());
                 preparedStatement.setString(2, vehicle.getModel());
                 preparedStatement.setString(3, vehicle.getBrand());
@@ -29,6 +31,11 @@ public class VehicleDao {
                 preparedStatement.setString(5, vehicle.getLicensePlate());
                 preparedStatement.setString(6, vehicle.getNextTechnicalInspection());
                 preparedStatement.executeUpdate();
+                ResultSet rs = preparedStatement.getGeneratedKeys();
+                if (rs.next()) {
+                    vehicle.setId(rs.getInt(1));
+                }
+
 
                 System.out.println("Dodano pojazd " + vehicle.getModel() + " do bazy danych");
 

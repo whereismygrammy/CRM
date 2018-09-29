@@ -28,3 +28,22 @@ nextTechnicalInspection date,
 PRIMARY KEY(id),
 FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
+
+CREATE TABLE orders(
+id int AUTO_INCREMENT,
+employee_id int,
+vehicle_id int not null,
+dateOfAcceptance date,
+dateOfPlanedStart date,
+dateOfStart date,
+problemDescription varchar(255),
+repairDescription varchar(255),
+stat varchar(12),
+costForClient double,
+partsCost double,
+workCost double,
+numberOfHours int,
+PRIMARY KEY(id),
+FOREIGN KEY (employee_id) REFERENCES employee(id),
+FOREIGN KEY (vehicle_id) REFERENCES vehicle(id)
+);

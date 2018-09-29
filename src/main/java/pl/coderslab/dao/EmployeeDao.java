@@ -17,8 +17,9 @@ public class EmployeeDao {
         if (employee.getId() == 0) {
             String sql = "INSERT INTO employee (name, surname, adress, phone, note, costPerHour) VALUES (?, ?, ?, ?, ?, ?)";
             try {
+                String[] generatedColumns = {"ID"};
                 Connection connection = DbUtil.createConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,generatedColumns);
                 preparedStatement.setString(1, employee.getName());
                 preparedStatement.setString(2, employee.getSurname());
                 preparedStatement.setString(3, employee.getAddress());
@@ -26,6 +27,12 @@ public class EmployeeDao {
                 preparedStatement.setString(5, employee.getNote());
                 preparedStatement.setDouble(6, employee.getCostPerHour());
                 preparedStatement.executeUpdate();
+
+                ResultSet rs = preparedStatement.getGeneratedKeys();
+                if (rs.next()) {
+                    employee.setId(rs.getInt(1));
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -47,6 +47,12 @@
             <input type="text" placeholder="${customer.surname}" name="lastname">
         </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+
+            <input type="date" name="birthday">
+
+        </mat-form-field>
+
         <input class="hidden" type="text" name="id" value="${customer.id}">
 
         <center>

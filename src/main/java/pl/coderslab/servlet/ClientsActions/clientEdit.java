@@ -17,7 +17,7 @@ public class clientEdit extends HttpServlet {
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String date = request.getParameter("birthday");
-        int id= Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
 
         Customer customer = new Customer(firstname, lastname, date);
         customer.setId(id);

@@ -13,15 +13,21 @@ public class CustomerDao {
     public static void addOrUpdateCustomer(Customer customer) {
         if (customer.getId() == 0) {
 
-            String sql = "INSERT INTO customer (name, surname, birthday) VALUES (?, ?, ?)";
             try {
+                String sql = "INSERT INTO customer (name, surname, birthday) VALUES (?, ?, ?)";
+                String[] generatedColumns = {"ID"};
                 // TO DO POPRAWYs TODO
                 Connection connection = DbUtil.createConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql, generatedColumns);
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
                 preparedStatement.setString(3, customer.getBirthDay().toString());
                 preparedStatement.executeUpdate();
+                ResultSet rs = preparedStatement.getGeneratedKeys();
+                if (rs.next()) {
+                    customer.setId(rs.getInt(1));
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

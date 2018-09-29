@@ -29,6 +29,15 @@
 
 <h5>Lista klientów</h5>
 
+<form action="/clientList" method="post">
+    <mat-form-field class="example-full-width">
+        <input placeholder="Wyszukaj po nazwisku" type="text" name="search">
+    </mat-form-field>
+
+        <input type="submit" class="waves-effect waves-light btn" value="Szukaj">
+
+</form>
+
 <table width="50%" border="1">
 
     <tr align="left">

@@ -81,7 +81,7 @@
             </td>
             <td>
             <td>
-            <a href="/vehicleDetails?vehicleId=${vehicle.id}" class="waves-effect waves-light btn">Szczegóły</a>
+            <a href="/vehicleDetails?vehicleId=${vehicle.id}" class="waves-effect waves-light btn">Szczegóły i historia</a>
             </td>
             <td>
             <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}" class="waves-effect waves-light btn">Usuń</a>

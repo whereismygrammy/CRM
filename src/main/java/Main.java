@@ -1,8 +1,5 @@
 
-import pl.coderslab.dao.CustomerDao;
-import pl.coderslab.dao.EmployeeDao;
-import pl.coderslab.dao.OrderDao;
-import pl.coderslab.dao.VehicleDao;
+import pl.coderslab.dao.*;
 import pl.coderslab.model.*;
 import pl.coderslab.utils.StatusWriter;
 
@@ -17,14 +14,12 @@ public class Main {
     public static void main(String[] args) {
 
 
-        List<Vehicle> vehicles = VehicleDao.getAllVehicle();
+        TimeRaport timeRaport = new TimeRaport("1000-10-01", "2020-02-02");
+        timeRaport.setList();
 
-        for (Vehicle v : vehicles){
-            System.out.println(v);
+        for (String[] arr : timeRaport.getList()) {
+            System.out.println(arr[0] + " " + arr[1]);
         }
-
-
-
 
     }
 }

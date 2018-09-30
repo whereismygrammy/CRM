@@ -25,20 +25,33 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+    
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
 
 <center>
     <div class="row">
-        <div class="col s4 offset-s1">
+
+        <div class="col s4 offset-s4">
             <div class="card">
-                <h5>Kutas 1</h5>
+                <h5>Zyski w okresie</h5>
+
+            </div>
+        </div>
+
+
+        <div class="col s4 offset-s4">
+            <div class="card">
+
 
                 <table>
                     <tr>
+                        <td>
+                            <b>
+                                No
+                            </b>
+                        </td>
                         <td>
                             <b>
                                 Imię i nazwisko pracownika
@@ -50,35 +63,73 @@
                             </b>
                         </td>
                     </tr>
-                    <c:forEach items="${employeers}" varStatus="i" var="employee">
+                    <c:forEach items="${raport1}" varStatus="i" var="row">
                         <tr>
-                            <td>
-                                    ${employee.name} ${employee.surname}
-                            </td>
-                            <td>
-                                kutas 18
-                            </td>
-                        </tr>
 
+                            <td>
+                                    ${i.count}
+                            </td>
+                            <td>
+                                    ${row[0]}
+                            </td>
+                            <td>
+                                    ${row[1]}
+                            </td>
+
+
+                        </tr>
 
                     </c:forEach>
 
 
                 </table>
 
+                <small>Uproszczony raport liczy dane na podstawie zleceń użytkownika po dacie rozpoczęcia
+                    projektu.
+                </small>
 
             </div>
         </div>
 
-        <div class="col s4 offset-s1">
-            <div class="card">
-                <h5>Kutas 2</h5>
 
+        <div class="col s4 offset-s4">
+            <div>
+                <form action="/raports" method="post">
+
+                    <table class="responsive-table">
+                        <tr>
+                            <td>
+                                <label>Licz od</label>
+                                <input type="date" name="raportStart">
+
+                            </td>
+
+                            <td>
+                                <label>Licz do</label>
+                                <input type="date" name="raportEnd">
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                        </tr>
+
+                    </table>
+
+                    <br>
+                    <button class="btn waves-effect waves-light" type="submit">Generuj
+                        <i class="material-icons right">assignment </i>
+                    </button>
+
+                </form>
             </div>
         </div>
 
     </div>
 </center>
+
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>

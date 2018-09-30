@@ -9,17 +9,16 @@ import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class Main {
+public class Tests {
 
     public static void main(String[] args) {
 
 
-        TimeRaport timeRaport = new TimeRaport("1000-10-01", "2020-02-02");
-        timeRaport.setList();
+        CashRaport cashRaport = new CashRaport("2010-10-04", "2019-10-30");
+        cashRaport.setCash();
 
-        for (String[] arr : timeRaport.getList()) {
-            System.out.println(arr[0] + " " + arr[1]);
-        }
 
     }
+
+
 }

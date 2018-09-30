@@ -53,6 +53,8 @@
         </th>
         <th>
         </th>
+        <th>
+        </th>
 
     </tr>
 
@@ -83,10 +85,14 @@
             </td>
 
             <td>
-                <a href="/employeeDel?id=${employee.id}" class="waves-effect waves-light btn">Usuń pracownika</a>
+                <a href="/employeeRepair?empId=${employee.id}" class="waves-effect waves-light btn">Obecnie realizowane zlecenia</a>
 
             </td>
 
+            <td>
+                <a href="/employeeDel?id=${employee.id}" class="waves-effect waves-light btn">Usuń pracownika</a>
+
+            </td>
         </tr>
 
     </c:forEach>

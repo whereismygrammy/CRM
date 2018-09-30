@@ -1,5 +1,6 @@
 package pl.coderslab.dao;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import pl.coderslab.model.Customer;
 import pl.coderslab.model.Order;
 import pl.coderslab.utils.DbUtil;
@@ -151,6 +152,26 @@ public class OrderDao {
                 Order order = orderFromResultSet(resultSet);
                 orderList.add(order);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orderList;
+    }
+
+    public static List<Order> getActiveOrdersByEmploeerId(int id) {
+        ArrayList<Order> orderList = new ArrayList<>();
+        String sql = "SELECT * FROM orders where employee_id = ? and stat = 'IN_REPAIR'";
+        try {
+            Connection connection = DbUtil.createConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Order order = orderFromResultSet(resultSet);
+                orderList.add(order);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -16,8 +16,7 @@
             <td><a href="/clientList"> Klienci</a></td>
             <td><a href="/orderList"> Zlecenia</a></td>
             <td><a href="/employeeList"> Pracownicy</a></td>
-            <td><a href="/raportList"> Raporty</a></td>
-
+            <td><a href="/raportsMain"> Raporty</a></td>
         </tr>
     </table>
 </header>

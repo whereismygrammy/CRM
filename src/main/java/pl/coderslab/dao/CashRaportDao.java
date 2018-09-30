@@ -25,9 +25,6 @@ public class CashRaportDao {
 
             if (resultSet.next()) {
                 cash = resultSet.getDouble(1);
-
-                System.out.println(cash);
-
             }
         } catch (SQLException e) {
             e.printStackTrace();

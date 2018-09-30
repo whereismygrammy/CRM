@@ -81,10 +81,11 @@
             </td>
             <td>
             <td>
-            <a href="/vehicleDetails?vehicleId=${vehicle.id}" class="waves-effect waves-light btn">Szczegóły i historia</a>
+                <a href="/vehicleDetails?vehicleId=${vehicle.id}" class="waves-effect waves-light btn">Historia</a>
             </td>
             <td>
-            <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}" class="waves-effect waves-light btn">Usuń</a>
+                <a href="/vehicleDel?vehicleId=${vehicle.id}&customerId=${customerId}"
+                   class="waves-effect waves-light btn">Usuń</a>
             </td>
 
         </tr>
@@ -94,7 +95,7 @@
 </table>
 <br>
 <center>
-    <a href="/vehicleAdd?id=${customerId}" class="waves-effect waves-light btn">Dodaj samochód</a>
+    <a href="/vehicleAdd?id=${customerId}" class="waves-effect waves-light btn">Dodaj pojazd</a>
 </center>
 
 <br>

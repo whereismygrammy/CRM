@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
 </head>
 <body>
 <%@ include file="../footer_header/header.jspf" %>
@@ -34,8 +34,23 @@
     <div class="row">
 
         <div class="col s4 offset-s4">
+            <small>Wygenerowane dla okresu ${raportTimeCash.start} do ${raportTimeCash.end}</small>
+        </div>
+
+        <div class="col s4 offset-s4">
             <div class="card">
-                <h5>Zyski w okresie</h5>
+
+                <table>
+                    <tr>
+                        <td>
+                            <center>
+                                <h5>Kwota wystawionych faktur <br> ${raportTimeCash.cash} $</h5>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+
+                <small>Raport pokazuje kwotę za zrealizowane zadania, pozyskane w zadanym okresie czasu.</small>
 
             </div>
         </div>

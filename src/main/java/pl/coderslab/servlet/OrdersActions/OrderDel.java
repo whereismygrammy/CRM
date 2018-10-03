@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "orderDel", urlPatterns = "/orderDel")
-public class orderDel extends HttpServlet {
+@WebServlet(name = "OrderDel", urlPatterns = "/orderDel")
+public class OrderDel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int delId = Integer.parseInt(request.getParameter("orderId"));
         OrderDao.deleteOrderById(delId);

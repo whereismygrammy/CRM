@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "orderAdd", urlPatterns = "/orderAdd")
-public class orderAdd extends HttpServlet {
+@WebServlet(name = "OrderAdd", urlPatterns = "/orderAdd")
+public class OrderAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Order order = createOrder(request);
         OrderDao.addOrUpdateOrder(order);

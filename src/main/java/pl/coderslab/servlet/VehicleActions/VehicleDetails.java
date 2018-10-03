@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "vehicleDetails", urlPatterns = "/vehicleDetails")
-public class vehicleDetails extends HttpServlet {
+@WebServlet(name = "VehicleDetails", urlPatterns = "/vehicleDetails")
+public class VehicleDetails extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int vehicleId = Integer.parseInt(request.getParameter("vehicleId"));
         Vehicle vehicle = VehicleDao.getVehicleById(vehicleId);

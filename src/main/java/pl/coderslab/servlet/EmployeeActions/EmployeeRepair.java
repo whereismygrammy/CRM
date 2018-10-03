@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "employeeRepair", urlPatterns = "/employeeRepair")
-public class employeeRepair extends HttpServlet {
+@WebServlet(name = "EmployeeRepair", urlPatterns = "/employeeRepair")
+public class EmployeeRepair extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empId = Integer.parseInt(request.getParameter("empId"));
 

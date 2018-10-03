@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.sql.Time;
 import java.util.List;
 
-@WebServlet(name = "raports", urlPatterns = "/raports")
-public class raports extends HttpServlet {
+@WebServlet(name = "Raports", urlPatterns = "/raports")
+public class Raports extends HttpServlet {
     final String TIME_START = "1970-01-01";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,6 @@ public class raports extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
         TimeRaport timeRaport = new TimeRaport(TIME_START, CurrentDate.getCurrentDate());
         timeRaport.setList();

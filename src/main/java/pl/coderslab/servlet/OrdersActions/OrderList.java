@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "orderList", urlPatterns = "/orderList")
-public class orderList extends HttpServlet {
+@WebServlet(name = "OrderList", urlPatterns = "/orderList")
+public class OrderList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 

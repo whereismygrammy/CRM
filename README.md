@@ -1,6 +1,7 @@
 # CRM
 Projekt prostego CRMu do zarządzania warsztatem samochodowym.
 
+
 Funkcje:
 - Zarządzanie klientami, pojazdami, pracownikami i zleceniami naprawy
 - Widok klientów, ich pojazdów i zleceń.

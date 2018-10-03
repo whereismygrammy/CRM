@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "employeeAdd", urlPatterns = "/employeeAdd")
-public class employeeAdd extends HttpServlet {
+@WebServlet(name = "EmployeeAdd", urlPatterns = "/employeeAdd")
+public class EmployeeAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
@@ -25,7 +25,7 @@ public class employeeAdd extends HttpServlet {
         Employee employee = new Employee(firstname, lastname, address, phone, note, costPerHour);
         EmployeeDao.addOrUpdateEmployee(employee);
 
-        getServletContext().getRequestDispatcher("/WEB-INF/views/employee_actions/employee_added.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/employee_actions/employee_added.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

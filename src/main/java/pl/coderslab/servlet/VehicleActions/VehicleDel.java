@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "vehicleDel", urlPatterns = "/vehicleDel")
-public class vehicleDel extends HttpServlet {
+@WebServlet(name = "VehicleDel", urlPatterns = "/vehicleDel")
+public class VehicleDel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int vehicleId = Integer.parseInt(request.getParameter("vehicleId"));
         VehicleDao.deleteVehicleById(vehicleId);

@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebServlet(name = "clientList", urlPatterns = "/clientList")
-public class clientList extends HttpServlet {
+@WebServlet(name = "ClientList", urlPatterns = "/clientList")
+public class ClientList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String search = request.getParameter("search");
 

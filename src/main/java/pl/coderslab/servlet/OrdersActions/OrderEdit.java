@@ -1,6 +1,5 @@
 package pl.coderslab.servlet.OrdersActions;
 
-import pl.coderslab.dao.CustomerDao;
 import pl.coderslab.dao.EmployeeDao;
 import pl.coderslab.dao.OrderDao;
 import pl.coderslab.dao.VehicleDao;
@@ -14,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static pl.coderslab.servlet.OrdersActions.orderAdd.createOrder;
+import static pl.coderslab.servlet.OrdersActions.OrderAdd.createOrder;
 
-@WebServlet(name = "orderEdit", urlPatterns = "/orderEdit")
-public class orderEdit extends HttpServlet {
+@WebServlet(name = "OrderEdit", urlPatterns = "/orderEdit")
+public class OrderEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
 

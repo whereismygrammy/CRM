@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "orderDetails", urlPatterns = "/orderDetails")
-public class orderDetails extends HttpServlet {
+@WebServlet(name = "OrderDetails", urlPatterns = "/orderDetails")
+public class OrderDetails extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         Order order = OrderDao.getOrderById(orderId);

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "employeeList", urlPatterns = "/employeeList")
-public class employeeList extends HttpServlet {
+@WebServlet(name = "EmployeeList", urlPatterns = "/employeeList")
+public class EmployeeList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Employee> allEmployee = EmployeeDao.getAllEmployee();
         request.setAttribute("employeers", allEmployee);
